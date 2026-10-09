@@ -1,161 +1,349 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صالون الكوافير حمد وديار | حجز أونلاين</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
-        body { background-color: #0d0d0d; color: #f5f5f5; text-align: center; padding: 15px; }
-        .container { max-width: 500px; margin: 0 auto; background: #181818; padding: 20px; border-radius: 20px; border: 1px solid #d4af37; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        
-        .store-banner { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; border: 2px solid #d4af37; margin-bottom: 12px; }
-        .header h1 { color: #d4af37; font-size: 22px; margin-bottom: 3px; }
-        .header p { color: #aaa; font-size: 12px; margin-bottom: 15px; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صالون الكوافير حمد وديار</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0d0d0d;
+      --card-bg: #1a1a1a;
+      --accent-red: #e50914;
+      --accent-red-hover: #b80710;
+      --text-gold: #f5c518;
+      --text-light: #f5f5f5;
+      --text-gray: #a0a0a0;
+      --border-color: #333333;
+    }
 
-        /* صور الحلاقين */
-        .barbers-gallery { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; background: #222; padding: 12px; border-radius: 12px; border: 1px solid #333; }
-        .barber-profile { text-align: center; }
-        .barber-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #d4af37; margin-bottom: 5px; }
-        .barber-name-text { color: #fff; font-size: 12px; font-weight: bold; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', sans-serif;
+    }
 
-        .section-title { color: #d4af37; font-size: 14px; margin: 15px 0 8px; text-align: right; font-weight: bold; }
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-light);
+      line-height: 1.6;
+      padding-bottom: 40px;
+    }
 
-        .boxes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
-        .boxes-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
-        .boxes-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
-        
-        .box { background: #222; border: 1px solid #444; padding: 10px 6px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 12px; color: #fff; text-align: center; }
-        .box:hover { border-color: #d4af37; background: #2a2a2a; }
-        .box.active { background: #d4af37; color: #000; font-weight: bold; border-color: #fff; }
-        .box .price { display: block; font-size: 11px; color: #25d366; margin-top: 3px; font-weight: bold; }
-        .box.active .price { color: #000; }
+    header {
+      background: linear-gradient(180deg, #1f0505 0%, #0d0d0d 100%);
+      text-align: center;
+      padding: 30px 15px 20px;
+      border-bottom: 2px solid var(--accent-red);
+    }
 
-        .form-group { margin-bottom: 12px; text-align: right; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #444; background: #252525; color: #fff; font-size: 14px; outline: none; }
-        input:focus { border-color: #d4af37; }
+    .header-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--text-light);
+      margin-bottom: 5px;
+    }
 
-        .btn-whatsapp { width: 100%; padding: 14px; background: #25d366; color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; transition: 0.3s; }
-        .btn-whatsapp:hover { background: #1ebc57; }
-        
-        .footer { margin-top: 18px; color: #666; font-size: 11px; }
-    </style>
+    .header-title span {
+      color: var(--accent-red);
+    }
+
+    .header-quote {
+      font-size: 14px;
+      color: var(--text-gray);
+      font-style: italic;
+      margin-top: 5px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    /* قسم الصور والتعريف */
+    .store-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--accent-red);
+      margin-bottom: 15px;
+    }
+
+    .barbers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .barber-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+
+    .barber-card img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .barber-name {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--text-light);
+    }
+
+    /* عبارات عن الحلاقة */
+    .quote-box {
+      background: linear-gradient(135deg, #260505 0%, #1a1a1a 100%);
+      border-right: 4px solid var(--accent-red);
+      border-radius: 8px;
+      padding: 12px 15px;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #e0e0e0;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--accent-red);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* جدول الخدمات والأسعار */
+    .services-list {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-bottom: 25px;
+      border: 1px solid var(--border-color);
+    }
+
+    .service-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #2a2a2a;
+      font-size: 15px;
+    }
+
+    .service-item:last-child {
+      border-bottom: none;
+    }
+
+    .service-price {
+      color: var(--text-gold);
+      font-weight: 700;
+    }
+
+    /* اختيار اليوم والوقت والمعلومات */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: var(--text-gray);
+    }
+
+    select, input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      color: var(--text-light);
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    select:focus, input:focus {
+      border-color: var(--accent-red);
+    }
+
+    .btn-submit {
+      width: 100%;
+      background-color: var(--accent-red);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+      transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+      background-color: var(--accent-red-hover);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 12px;
+      color: var(--text-gray);
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- صورة واجهة المحل الحقيقية -->
-    <img src="Andalusi 2026-10-09 14.27.59.jpeg" alt="صالون الكوافير حمد وديار" class="store-banner">
+  <header>
+    <div class="header-title">صالون <span>حمد وديار</span></div>
+    <div class="header-quote">أنُاقة الرجل تبدأ من قصّة شعره</div>
+  </header>
+
+  <div class="container">
+
+    <!-- صور واجهة الصالون والكادر -->
+    <img src="store.jpg" alt="واجهة الصالون" class="store-img" onerror="this.style.display='none'">
+
+    <div class="barbers-grid">
+      <div class="barber-card">
+        <img src="hamad.jpg" alt="الحلاق حمد" onerror="this.src='https://via.placeholder.com/150/111/fff?text=Hamad'">
+        <div class="barber-name">الكوافير حمد</div>
+      </div>
+      <div class="barber-card">
+        <img src="diar.jpg" alt="الحلاق ديار" onerror="this.src='https://via.placeholder.com/150/111/fff?text=Diar'">
+        <div class="barber-name">الكوافير ديار</div>
+      </div>
+    </div>
+
+    <!-- عبارة جميلة عن الحلاقة -->
+    <div class="quote-box">
+      "الحلاقة ليست مجرد شعر يُقص، بل هي لمسة فن تُبرز شخصيتك وثقتك بنفسك."
+    </div>
+
+    <!-- قائمة الخدمات والأسعار -->
+    <div class="section-title">✂️ قائمة الخدمات والأسعار</div>
+    <div class="services-list">
+      <div class="service-item">
+        <span>حلاقة شعر</span>
+        <span class="service-price">5,000 د.ع</span>
+      </div>
+      <div class="service-item">
+        <span>تحديد / حلاقة لحية</span>
+        <span class="service-price">3,000 د.ع</span>
+      </div>
+      <div class="service-item">
+        <span>سشوار وتسريح</span>
+        <span class="service-price">2,000 د.ع</span>
+      </div>
+      <div class="service-item">
+        <span>تنظيف وصبغ لحية/شعر</span>
+        <span class="service-price">5,000 د.ع</span>
+      </div>
+      <div class="service-item">
+        <span>بكج كامل (شعر + لحية + تنظيف)</span>
+        <span class="service-price">12,000 د.ع</span>
+      </div>
+    </div>
+
+    <!-- استمارة حجز موعد -->
+    <div class="section-title">📅 احجز موعدك الآن</div>
     
-    <div class="header">
-        <h1>صالون الكوافير حمد وديار</h1>
-        <p>حديثة - الأنبار | احجز موعدك بضغطة زر</p>
-    </div>
-
-    <!-- صور الحلاقين الشخصية الحقيقية -->
-    <div class="barbers-gallery">
-        <div class="barber-profile">
-            <img src="IMG_6375.jpeg" alt="الكوافير حمد" class="barber-avatar">
-            <div class="barber-name-text">الكوافير حمد</div>
-        </div>
-        <div class="barber-profile">
-            <img src="IMG_6376.jpeg" alt="الكوافير ديار" class="barber-avatar">
-            <div class="barber-name-text">الكوافير ديار</div>
-        </div>
-    </div>
-
-    <!-- 1. اختيار الكوافير -->
-    <div class="section-title">اختر الكوافير:</div>
-    <div class="boxes-grid" id="barberGroup">
-        <div class="box active" onclick="selectBox('barberGroup', this, 'الكوافير حمد')">✂️ الكوافير حمد</div>
-        <div class="box" onclick="selectBox('barberGroup', this, 'الكوافير ديار')">✂️ الكوافير ديار</div>
-    </div>
-
-    <!-- 2. اختيار الخدمة والقصات مع الأسعار -->
-    <div class="section-title">اختر الخدمة المطلوبة:</div>
-    <div class="boxes-grid" id="serviceGroup">
-        <div class="box active" onclick="selectBox('serviceGroup', this, 'حلاقة كاملة')">حلاقة كاملة<span class="price">10,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'تحديد خيط أو شمع')">تحديد خيط/شمع<span class="price">5,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'حلاقة أطفال')">حلاقة أطفال<span class="price">5,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'سشوار')">سشوار<span class="price">3,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'تنظيف بشرة HydroFacial')">تنظيف HydroFacial<span class="price">10,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'تنظيف بشرة جلسة ملكية')">تنظيف جلسة ملكية<span class="price">15,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'كرياتين')">كرياتين<span class="price">50,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'بروتين')">بروتين<span class="price">75,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'معالج شعر / مسرح مؤقت')">معالج شعر مؤقت<span class="price">5,000 د.ع</span></div>
-        <div class="box" onclick="selectBox('serviceGroup', this, 'كيرلي')">كيرلي<span class="price">50,000 د.ع</span></div>
-    </div>
-
-    <!-- 3. اختيار يوم الأسبوع -->
-    <div class="section-title">اختر اليوم:</div>
-    <div class="boxes-grid-4" id="dayGroup">
-        <div class="box active" onclick="selectBox('dayGroup', this, 'السبت')">السبت</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الأحد')">الأحد</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الاثنين')">الاثنين</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الثلاثاء')">الثلاثاء</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الأربعاء')">الأربعاء</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الخميس')">الخميس</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'الجمعة')">الجمعة</div>
-    </div>
-
-    <!-- 4. اختيار الوقت -->
-    <div class="section-title">اختر الوقت المناسب:</div>
-    <div class="boxes-grid-3" id="timeGroup">
-        <div class="box active" onclick="selectBox('timeGroup', this, '02:00 ظهراً')">2:00 م</div>
-        <div class="box" onclick="selectBox('timeGroup', this, '03:30 عصراً')">3:30 م</div>
-        <div class="box" onclick="selectBox('timeGroup', this, '05:00 عصراً')">5:00 م</div>
-        <div class="box" onclick="selectBox('timeGroup', this, '06:30 مساءً')">6:30 م</div>
-        <div class="box" onclick="selectBox('timeGroup', this, '08:00 مساءً')">8:00 م</div>
-        <div class="box" onclick="selectBox('timeGroup', this, '09:30 ليلاً')">9:30 م</div>
-    </div>
-
-    <!-- الاسم الكامل -->
-    <div class="section-title">اسمك الكريم:</div>
     <div class="form-group">
-        <input type="text" id="name" placeholder="أدخل اسمك الكريم" required>
+      <label for="barber">اختر الحلاق:</label>
+      <select id="barber">
+        <option value="حمد">الكوافير حمد</option>
+        <option value="ديار">الكوافير ديار</option>
+      </select>
     </div>
 
-    <button type="button" class="btn-whatsapp" onclick="sendWhatsApp()">تأكيد الحجز عبر الواتساب (حمد) 💬</button>
+    <div class="form-group">
+      <label for="day">اختر اليوم:</label>
+      <select id="day">
+        <option value="السبت">السبت</option>
+        <option value="الأحد">الأحد</option>
+        <option value="الإثنين">الإثنين</option>
+        <option value="الثلاثاء">الثلاثاء</option>
+        <option value="الأربعاء">الأربعاء</option>
+        <option value="الخميس">الخميس</option>
+        <option value="الجمعة">الجمعة</option>
+      </select>
+    </div>
 
-    <div class="footer">أهلاً وسهلاً بكم في صالون الكوافير حمد وديار</div>
-</div>
+    <div class="form-group">
+      <label for="time">اختر الوقت المناسب:</label>
+      <select id="time">
+        <option value="04:00 عصراً">04:00 عصراً</option>
+        <option value="05:00 عصراً">05:00 عصراً</option>
+        <option value="06:00 مساءً">06:00 مساءً</option>
+        <option value="07:00 مساءً">07:00 مساءً</option>
+        <option value="08:00 مساءً">08:00 مساءً</option>
+        <option value="09:00 مساءً">09:00 مساءً</option>
+        <option value="10:00 ليلاً">10:00 ليلاً</option>
+        <option value="11:00 ليلاً">11:00 ليلاً</option>
+      </select>
+    </div>
 
-<script>
-    function selectBox(groupId, element, value) {
-        const group = document.getElementById(groupId);
-        const boxes = group.getElementsByClassName('box');
-        for (let box of boxes) {
-            box.classList.remove('active');
-        }
-        element.classList.add('active');
+    <div class="form-group">
+      <label for="customerName">اسم الزبون الكريم:</label>
+      <input type="text" id="customerName" placeholder="اكتب اسمك هنا...">
+    </div>
+
+    <div class="form-group">
+      <label for="customerPhone">رقم هاتف الزبون:</label>
+      <input type="tel" id="customerPhone" placeholder="07xxxxxxxx">
+    </div>
+
+    <button class="btn-submit" onclick="sendBooking()">تأكيد الحجز عبر الواتساب 📲</button>
+
+  </div>
+
+  <footer>
+    حديثة - الأنبار | صالون الكوافير حمد وديار
+  </footer>
+
+  <script>
+    function sendBooking() {
+      const barber = document.getElementById('barber').value;
+      const day = document.getElementById('day').value;
+      const time = document.getElementById('time').value;
+      const name = document.getElementById('customerName').value.trim();
+      const phone = document.getElementById('customerPhone').value.trim();
+
+      if (!name) {
+        alert("يرجى كتابة اسمك الكريم لطُفاً.");
+        return;
+      }
+
+      if (!phone) {
+        alert("يرجى كتابة رقم هاتفك للتواصل.");
+        return;
+      }
+
+      const phoneNum = "9647800000000"; // يمكنك وضع رقم واتساب الصالون هنا
+
+      const message = `مرحباً، أود حجز موعد في صالون حمد وديار:%0A` +
+                      `👤 *الاسم:* ${name}%0A` +
+                      `📞 *رقم الهاتف:* ${phone}%0A` +
+                      `✂️ *الحلاق:* ${barber}%0A` +
+                      `📅 *اليوم:* ${day}%0A` +
+                      `⏰ *الوقت:* ${time}`;
+
+      window.open(`https://wa.me/${phoneNum}?text=${message}`, '_blank');
     }
-
-    function getSelectedValue(groupId) {
-        const group = document.getElementById(groupId);
-        const activeBox = group.querySelector('.box.active');
-        return activeBox ? activeBox.childNodes[0].nodeValue.trim() : '';
-    }
-
-    function sendWhatsApp() {
-        const name = document.getElementById('name').value;
-        const barber = getSelectedValue('barberGroup');
-        const service = getSelectedValue('serviceGroup');
-        const day = getSelectedValue('dayGroup');
-        const time = getSelectedValue('timeGroup');
-
-        if(!name) {
-            alert('يرجى كتابة اسمك الكريم قبل التأكيد');
-            document.getElementById('name').focus();
-            return;
-        }
-
-        const phone = "9647756534000"; 
-        
-        const message = `مرحباً صالون حمد وديار👋%0Aأود تثبيت حجز جديد:%0A👤 *الاسم:* ${name}%0A✂️ *الكوافير:* ${barber}%0A💈 *الخدمة:* ${service}%0A📅 *اليوم:* ${day}%0A⏰ *الوقت:* ${time}`;
-        
-        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-    }
-</script>
+  </script>
 
 </body>
 </html>
