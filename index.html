@@ -16,13 +16,14 @@
         /* صور الحلاقين */
         .barbers-gallery { display: flex; justify-content: center; gap: 25px; margin-bottom: 15px; background: #222; padding: 12px; border-radius: 12px; border: 1px solid #333; }
         .barber-profile { text-align: center; }
-        .barber-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 2px solid #d4af37; margin-bottom: 5px; }
+        .barber-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #d4af37; margin-bottom: 5px; }
         .barber-name-text { color: #fff; font-size: 12px; font-weight: bold; }
 
         .section-title { color: #d4af37; font-size: 14px; margin: 15px 0 8px; text-align: right; font-weight: bold; }
 
         .boxes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
         .boxes-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+        .boxes-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px; }
         
         .box { background: #222; border: 1px solid #444; padding: 10px 6px; border-radius: 8px; cursor: pointer; transition: 0.2s; font-size: 12px; color: #fff; text-align: center; }
         .box:hover { border-color: #d4af37; background: #2a2a2a; }
@@ -44,7 +45,7 @@
 
 <div class="container">
     <!-- صورة واجهة المحل الحقيقية -->
-    <img src="Andalusi 2026-10-09 14.27.59.jpeg" alt="صالون الكوافير حمد وديار" class="store-banner" onerror="this.src='https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=600&q=80'">
+    <img src="Andalusi 2026-10-09 14.27.59.jpeg" alt="صالون الكوافير حمد وديار" class="store-banner">
     
     <div class="header">
         <h1>صالون الكوافير حمد وديار</h1>
@@ -54,11 +55,11 @@
     <!-- صور الحلاقين الشخصية الحقيقية -->
     <div class="barbers-gallery">
         <div class="barber-profile">
-            <img src="IMG_6375.jpeg" alt="الكوافير حمد" class="barber-avatar" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=300&q=80'">
+            <img src="IMG_6375.jpeg" alt="الكوافير حمد" class="barber-avatar">
             <div class="barber-name-text">الكوافير حمد</div>
         </div>
         <div class="barber-profile">
-            <img src="IMG_6376.jpeg" alt="الكوافير ديار" class="barber-avatar" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'">
+            <img src="IMG_6376.jpeg" alt="الكوافير ديار" class="barber-avatar">
             <div class="barber-name-text">الكوافير ديار</div>
         </div>
     </div>
@@ -85,12 +86,16 @@
         <div class="box" onclick="selectBox('serviceGroup', this, 'كيرلي')">كيرلي<span class="price">50,000 د.ع</span></div>
     </div>
 
-    <!-- 3. اختيار اليوم -->
+    <!-- 3. اختيار يوم الأسبوع -->
     <div class="section-title">اختر اليوم:</div>
-    <div class="boxes-grid-3" id="dayGroup">
-        <div class="box active" onclick="selectBox('dayGroup', this, 'اليوم')">اليوم</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'غداً')">غداً</div>
-        <div class="box" onclick="selectBox('dayGroup', this, 'بعد غد')">بعد غد</div>
+    <div class="boxes-grid-4" id="dayGroup">
+        <div class="box active" onclick="selectBox('dayGroup', this, 'السبت')">السبت</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الأحد')">الأحد</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الاثنين')">الاثنين</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الثلاثاء')">الثلاثاء</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الأربعاء')">الأربعاء</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الخميس')">الخميس</div>
+        <div class="box" onclick="selectBox('dayGroup', this, 'الجمعة')">الجمعة</div>
     </div>
 
     <!-- 4. اختيار الوقت -->
