@@ -43,7 +43,6 @@
       font-size: 26px;
       font-weight: 900;
       color: var(--text-light);
-      letter-spacing: 0.5px;
     }
 
     .header-title span {
@@ -75,7 +74,6 @@
       padding: 15px;
     }
 
-    /* واجهة المحل في البداية */
     .store-banner {
       width: 100%;
       height: 210px;
@@ -83,7 +81,6 @@
       border-radius: 14px;
       border: 2px solid var(--accent-red);
       margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(229, 9, 20, 0.2);
     }
 
     .section-title {
@@ -96,7 +93,7 @@
       gap: 8px;
     }
 
-    /* بوكسات الكوافيرية مع الصور */
+    /* اختيار الحلاق */
     .barbers-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -134,7 +131,6 @@
       box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
     }
 
-    /* عبارات جميلة */
     .quote-box {
       background: linear-gradient(135deg, #1f0505 0%, var(--card-bg) 100%);
       border-right: 4px solid var(--accent-red);
@@ -145,10 +141,9 @@
       color: #e0e0e0;
       text-align: center;
       font-weight: 700;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
 
-    /* جدول الخدمات الفخم والجديد */
+    /* بوكسات نوع الحلاقة والخدمات (قابل للاختيار) */
     .services-grid {
       display: flex;
       flex-direction: column;
@@ -158,12 +153,24 @@
 
     .service-card {
       background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       border-radius: 10px;
       padding: 12px 15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .service-card:hover {
+      background-color: var(--card-hover);
+    }
+
+    .service-card.active {
+      border-color: var(--accent-red);
+      background-color: #1a0505;
+      box-shadow: 0 2px 10px rgba(229, 9, 20, 0.3);
     }
 
     .service-info {
@@ -189,7 +196,7 @@
       font-size: 15px;
     }
 
-    /* بوكسات الأيام والأوقات فخمة */
+    /* بوكسات الأيام والأوقات */
     .days-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -228,7 +235,6 @@
       box-shadow: 0 2px 10px rgba(229, 9, 20, 0.4);
     }
 
-    /* الحقول المدخلة */
     .form-group {
       margin-bottom: 15px;
     }
@@ -249,7 +255,6 @@
       color: var(--text-light);
       font-size: 15px;
       outline: none;
-      transition: border-color 0.3s;
     }
 
     input:focus {
@@ -268,21 +273,14 @@
       cursor: pointer;
       margin-top: 10px;
       box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
-      transition: background-color 0.3s;
     }
 
-    .btn-submit:hover {
-      background-color: var(--accent-red-hover);
-    }
-
-    /* توقيع المصمم في الزاوية */
     .designer-tag {
       text-align: left;
       font-size: 12px;
       color: var(--text-gray);
       margin-top: 20px;
       padding-left: 5px;
-      letter-spacing: 0.5px;
     }
 
     .designer-tag span {
@@ -310,10 +308,8 @@
 
   <div class="container">
 
-    <!-- صورة واجهة المحل -->
-    <img src="store.jpg" alt="واجهة صالون حمد وديار" class="store-banner" onerror="this.style.display='none'">
+    <img src="./store.jpg" alt="واجهة صالون حمد وديار" class="store-banner" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600'">
 
-    <!-- عبارات جميلة -->
     <div class="quote-box">
       "الحلاقة ليست مجرد شعر يُقص، بل هي لمسة فن تُبرز شخصيتك وثقتك بنفسك."
     </div>
@@ -321,83 +317,83 @@
     <!-- 1. اختيار الكوافير -->
     <div class="section-title">✂️ 1. اختر الكوافير المفضل لديك:</div>
     <div class="barbers-grid">
-      <div class="barber-card active" onclick="selectBarber(this, 'حمد', '+9647756534000')">
-        <img src="hamad.jpg" alt="الكوافير حمد" onerror="this.src='https://via.placeholder.com/150/111/fff?text=Hamad'">
+      <div class="barber-card" onclick="selectBarber(this, 'حمد', '+9647756534000')">
+        <img src="./hamad.jpg" alt="الكوافير حمد" onerror="this.src='https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=300'">
         <div class="barber-name">الكوافير حمد</div>
       </div>
       <div class="barber-card" onclick="selectBarber(this, 'ديار', '+9647736387506')">
-        <img src="diar.jpg" alt="الكوافير ديار" onerror="this.src='https://via.placeholder.com/150/111/fff?text=Diar'">
+        <img src="./diar.jpg" alt="الكوافير ديار" onerror="this.src='https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=300'">
         <div class="barber-name">الكوافير ديار</div>
       </div>
     </div>
 
-    <!-- 2. قائمة الخدمات والأسعار الجديدة -->
-    <div class="section-title">💈 2. قائمة الخدمات والأسعار:</div>
-    <div class="services-grid">
-      <div class="service-card">
+    <!-- 2. قائمة نوع الحلاقة والخدمات (تحديد بوكس) -->
+    <div class="section-title">💈 2. اختر نوع الحلاقة والخدمة:</div>
+    <div class="services-grid" id="servicesContainer">
+      <div class="service-card" onclick="selectService(this, 'حلاقة كاملة', '10,000 د.ع')">
         <div class="service-info">
           <span class="service-name">حلاقة كاملة</span>
           <span class="service-duration">المدة: ساعة</span>
         </div>
         <span class="service-price">10,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'تحديد خيط أو شمع', '5,000 د.ع')">
         <div class="service-info">
           <span class="service-name">تحديد خيط أو شمع</span>
           <span class="service-duration">المدة: 30 دقيقة</span>
         </div>
         <span class="service-price">5,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'حلاقة أطفال', '5,000 د.ع')">
         <div class="service-info">
           <span class="service-name">حلاقة أطفال</span>
           <span class="service-duration">المدة: 30 دقيقة</span>
         </div>
         <span class="service-price">5,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'سشوار', '3,000 د.ع')">
         <div class="service-info">
           <span class="service-name">سشوار</span>
           <span class="service-duration">المدة: 10 دقائق</span>
         </div>
         <span class="service-price">3,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'تنظيف بشرة HydroFacial', '10,000 د.ع')">
         <div class="service-info">
           <span class="service-name">تنظيف بشرة HydroFacial</span>
           <span class="service-duration">المدة: ساعة</span>
         </div>
         <span class="service-price">10,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'تنظيف بشرة — جلسة ملكية', '15,000 د.ع')">
         <div class="service-info">
           <span class="service-name">تنظيف بشرة — جلسة ملكية</span>
           <span class="service-duration">المدة: ساعة</span>
         </div>
         <span class="service-price">15,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'كرياتين', '50,000 د.ع')">
         <div class="service-info">
           <span class="service-name">كرياتين</span>
           <span class="service-duration">المدة: ساعتين</span>
         </div>
         <span class="service-price">50,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'بروتين', '75,000 د.ع')">
         <div class="service-info">
           <span class="service-name">بروتين</span>
           <span class="service-duration">المدة: ساعتين</span>
         </div>
         <span class="service-price">75,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'معالج شعر / مسرح مؤقت', '5,000 د.ع')">
         <div class="service-info">
           <span class="service-name">معالج شعر / مسرح مؤقت</span>
           <span class="service-duration">المدة: 5 دقائق</span>
         </div>
         <span class="service-price">5,000 د.ع</span>
       </div>
-      <div class="service-card">
+      <div class="service-card" onclick="selectService(this, 'كيرلي', '50,000 د.ع')">
         <div class="service-info">
           <span class="service-name">كيرلي</span>
           <span class="service-duration">المدة: ساعتين</span>
@@ -409,7 +405,7 @@
     <!-- 3. اختيار الأيام -->
     <div class="section-title">📅 3. اختر اليوم:</div>
     <div class="days-grid" id="daysContainer">
-      <div class="option-box active" onclick="selectDay(this, 'السبت')">السبت</div>
+      <div class="option-box" onclick="selectDay(this, 'السبت')">السبت</div>
       <div class="option-box" onclick="selectDay(this, 'الأحد')">الأحد</div>
       <div class="option-box" onclick="selectDay(this, 'الإثنين')">الإثنين</div>
       <div class="option-box" onclick="selectDay(this, 'الثلاثاء')">الثلاثاء</div>
@@ -418,10 +414,10 @@
       <div class="option-box" onclick="selectDay(this, 'الجمعة')">الجمعة</div>
     </div>
 
-    <!-- 4. اختيار الأوقات (من 3 عصراً إلى 1 ليلاً) -->
+    <!-- 4. اختيار الأوقات -->
     <div class="section-title">⏰ 4. اختر الوقت المناسب:</div>
     <div class="times-grid" id="timesContainer">
-      <div class="option-box active" onclick="selectTime(this, '03:00 عصراً')">03:00 عصراً</div>
+      <div class="option-box" onclick="selectTime(this, '03:00 عصراً')">03:00 عصراً</div>
       <div class="option-box" onclick="selectTime(this, '04:00 عصراً')">04:00 عصراً</div>
       <div class="option-box" onclick="selectTime(this, '05:00 عصراً')">05:00 عصراً</div>
       <div class="option-box" onclick="selectTime(this, '06:00 مساءً')">06:00 مساءً</div>
@@ -448,7 +444,6 @@
 
     <button class="btn-submit" onclick="sendBooking()">تأكيد الحجز عبر الواتساب 📲</button>
 
-    <!-- توقيع المصمم في الزاوية -->
     <div class="designer-tag">
       تصميم: <span>المصمم علي حسين</span>
     </div>
@@ -460,16 +455,25 @@
   </footer>
 
   <script>
-    let selectedBarberName = "حمد";
-    let selectedBarberPhone = "+9647756534000";
-    let selectedDay = "السبت";
-    let selectedTime = "03:00 عصراً";
+    let selectedBarberName = "";
+    let selectedBarberPhone = "";
+    let selectedService = "";
+    let selectedServicePrice = "";
+    let selectedDay = "";
+    let selectedTime = "";
 
     function selectBarber(element, name, phone) {
       document.querySelectorAll('.barber-card').forEach(card => card.classList.remove('active'));
       element.classList.add('active');
       selectedBarberName = name;
       selectedBarberPhone = phone;
+    }
+
+    function selectService(element, serviceName, price) {
+      document.querySelectorAll('#servicesContainer .service-card').forEach(card => card.classList.remove('active'));
+      element.classList.add('active');
+      selectedService = serviceName;
+      selectedServicePrice = price;
     }
 
     function selectDay(element, day) {
@@ -488,26 +492,41 @@
       const name = document.getElementById('customerName').value.trim();
       const phone = document.getElementById('customerPhone').value.trim();
 
-      if (!name) {
-        alert("يرجى كتابة اسمك الكريم لطفاً.");
+      // إجبار الزبون على إكمال كافة الاختيارات قبل التثبيت
+      if (!selectedBarberName) {
+        alert("لطفاً اختر الكوافير أولاً (حمد أو ديار).");
         return;
       }
-
+      if (!selectedService) {
+        alert("لطفاً اختر نوع الحلاقة أو الخدمة المطلوبة.");
+        return;
+      }
+      if (!selectedDay) {
+        alert("لطفاً اختر اليوم المناسب لك.");
+        return;
+      }
+      if (!selectedTime) {
+        alert("لطفاً اختر الوقت المناسب.");
+        return;
+      }
+      if (!name) {
+        alert("لطفاً اكتب اسمك الكريم.");
+        return;
+      }
       if (!phone) {
-        alert("يرجى كتابة رقم هاتفك للتواصل.");
+        alert("لطفاً اكتب رقم هاتفك للتواصل.");
         return;
       }
 
       const message = `مرحباً، أود حجز موعد في صالون حمد وديار:%0A` +
                       `👤 *اسم الزبون:* ${name}%0A` +
                       `📞 *رقم الهاتف:* ${phone}%0A` +
-                      `✂️ *الكوافير المختـار:* الكوافير ${selectedBarberName}%0A` +
+                      `✂️ *الكوافير:* الكوافير ${selectedBarberName}%0A` +
+                      `💈 *نوع الحلاقة:* ${selectedService} (${selectedServicePrice})%0A` +
                       `📅 *اليوم:* ${selectedDay}%0A` +
                       `⏰ *الوقت:* ${selectedTime}`;
 
-      // إزالة أي رموز غير رقمية من رقم الهاتف المخصص للحلاق ليعمل رابط الواتساب بدقة
       let cleanPhone = selectedBarberPhone.replace(/[^0-9]/g, '');
-
       window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
     }
   </script>
