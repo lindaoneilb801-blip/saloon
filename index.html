@@ -320,7 +320,7 @@
   <div class="container">
 
     <!-- صورة واجهة الصالون -->
-    <img src="store.jpg" alt="واجهة صالون الكوافير حمد" class="store-banner" onerror="this.src='https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600'">
+    <img src="./Andalusi%202026-10-09%2014.27.59.jpeg" alt="واجهة صالون الكوافير حمد" class="store-banner" onerror="this.src='store.jpg'">
 
     <div class="quote-box">
       "الحلاقة ليست مجرد شعر يُقص، بل هي لمسة فن تُبرز شخصيتك وثقتك بنفسك."
@@ -330,11 +330,11 @@
     <div class="section-title">✂️ 1. اختر الكوافير المفضل لديك:</div>
     <div class="barbers-grid">
       <div class="barber-card" onclick="selectBarber(this, 'حمد', '+9647756534000')">
-        <img src="hamad.jpg" alt="الكوافير حمد" onerror="this.src='https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=300'">
+        <img src="./IMG_6375.jpeg" alt="الكوافير حمد" onerror="this.src='hamad.jpg'">
         <div class="barber-name">الكوافير حمد</div>
       </div>
       <div class="barber-card" onclick="selectBarber(this, 'ديار', '+9647736387506')">
-        <img src="diar.jpg" alt="الكوافير ديار" onerror="this.src='https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=300'">
+        <img src="./IMG_6376.jpeg" alt="الكوافير ديار" onerror="this.src='diar.jpg'">
         <div class="barber-name">الكوافير ديار</div>
       </div>
     </div>
@@ -492,7 +492,7 @@
       document.querySelectorAll('#daysContainer .option-box').forEach(box => box.classList.remove('active'));
       element.classList.add('active');
       selectedDay = day;
-      selectedTime = ""; // Reset time when day changes
+      selectedTime = "";
       checkBookedTimes();
     }
 
@@ -548,7 +548,6 @@
         return;
       }
 
-      // Lock the selected time in local storage so it becomes booked/disabled
       let booked = JSON.parse(localStorage.getItem('booked_' + selectedDay) || '[]');
       if (!booked.includes(selectedTime)) {
         booked.push(selectedTime);
@@ -566,7 +565,6 @@
       let cleanPhone = selectedBarberPhone.replace(/[^0-9]/g, '');
       window.open(`https://wa.me/${cleanPhone}?text=${message}`, '_blank');
       
-      // Refresh time slots view
       checkBookedTimes();
     }
   </script>
