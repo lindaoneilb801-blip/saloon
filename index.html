@@ -292,6 +292,8 @@
       margin-top: 20px;
       padding-left: 5px;
       direction: ltr;
+      cursor: pointer;
+      user-select: none;
     }
 
     .designer-tag span {
@@ -319,7 +321,6 @@
 
   <div class="container">
 
-    <!-- صورة واجهة الصالون -->
     <img src="./Andalusi%202026-10-09%2014.27.59.jpeg" alt="واجهة صالون الكوافير حمد" class="store-banner" onerror="this.src='store.jpg'">
 
     <div class="quote-box">
@@ -456,7 +457,7 @@
 
     <button class="btn-submit" onclick="sendBooking()">تأكيد الحجز عبر الواتساب 📲</button>
 
-    <div class="designer-tag">
+    <div class="designer-tag" onclick="adminSecretClick()">
       Designed by: <span>ALI - HUSSAIN</span>
     </div>
 
@@ -473,6 +474,9 @@
     let selectedServicePrice = "";
     let selectedDay = "";
     let selectedTime = "";
+
+    let adminClickCount = 0;
+    let adminTimer = null;
 
     function selectBarber(element, name, phone) {
       document.querySelectorAll('.barber-card').forEach(card => card.classList.remove('active'));
@@ -519,34 +523,41 @@
       });
     }
 
+    function adminSecretClick() {
+      adminClickCount++;
+      clearTimeout(adminTimer);
+      if (adminClickCount >= 3) {
+        adminClickCount = 0;
+        let dayToReset = prompt("🔐 لوحة التحكم السرية:\nاكتب اسم اليوم المراد فتح أوقاته (السبت، الأحد، الإثنين، الثلاثاء، الأربعاء، الخميس، الجمعة):");
+        if (dayToReset) {
+          dayToReset = dayToReset.trim();
+          const validDays = ['السبت', 'الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
+          if (validDays.includes(dayToReset)) {
+            localStorage.removeItem('booked_' + dayToReset);
+            if (selectedDay === dayToReset) {
+              checkBookedTimes();
+              selectedTime = "";
+            }
+            alert(`✅ تم فتح وإلغاء حجوزات يوم (${dayToReset}) بنجاح!`);
+          } else {
+            alert("❌ اسم اليوم غير صحيح.");
+          }
+        }
+      } else {
+        adminTimer = setTimeout(() => { adminClickCount = 0; }, 800);
+      }
+    }
+
     function sendBooking() {
       const name = document.getElementById('customerName').value.trim();
       const phone = document.getElementById('customerPhone').value.trim();
 
-      if (!selectedBarberName) {
-        alert("لطفاً اختر الكوافير أولاً (حمد أو ديار).");
-        return;
-      }
-      if (!selectedService) {
-        alert("لطفاً اختر نوع الحلاقة أو الخدمة المطلوبة.");
-        return;
-      }
-      if (!selectedDay) {
-        alert("لطفاً اختر اليوم المناسب لك.");
-        return;
-      }
-      if (!selectedTime) {
-        alert("لطفاً اختر الوقت المناسب.");
-        return;
-      }
-      if (!name) {
-        alert("لطفاً اكتب اسمك الكريم.");
-        return;
-      }
-      if (!phone) {
-        alert("لطفاً اكتب رقم هاتفك للتواصل.");
-        return;
-      }
+      if (!selectedBarberName) { alert("لطفاً اختر الكوافير أولاً (حمد أو ديار)."); return; }
+      if (!selectedService) { alert("لطفاً اختر نوع الحلاقة أو الخدمة المطلوبة."); return; }
+      if (!selectedDay) { alert("لطفاً اختر اليوم المناسب لك."); return; }
+      if (!selectedTime) { alert("لطفاً اختر الوقت المناسب."); return; }
+      if (!name) { alert("لطفاً اكتب اسمك الكريم."); return; }
+      if (!phone) { alert("لطفاً اكتب رقم هاتفك للتواصل."); return; }
 
       let booked = JSON.parse(localStorage.getItem('booked_' + selectedDay) || '[]');
       if (!booked.includes(selectedTime)) {
